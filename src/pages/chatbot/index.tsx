@@ -1,7 +1,6 @@
 import { useChat } from "ai/react";
 import { Input, Button, Spin } from "antd";
 import { IoMdSend } from "react-icons/io";
-import { LoadingOutlined } from "@ant-design/icons";
 import { useEffect, useRef } from "react";
 import Image from "next/image";
 
@@ -25,7 +24,7 @@ const Chatbot = () => {
         <div className="flex gap-x-4 text-white items-center">
           <Image
             className="rounded-full"
-            src={message.role === "user" ? "./person.jpg" : "./sage.jpg"}
+            src={message.role === "user" ? "/person.jpg" : "/sage.jpg"}
             alt="avatar"
             height={40}
             width={40}
@@ -47,7 +46,7 @@ const Chatbot = () => {
           {messages.length === 0 ? (
             <div className="text-white flex flex-col items-center gap-y-10">
               <Image
-                src="./sage.jpg"
+                src="/sage.jpg"
                 height={150}
                 width={150}
                 className="rounded-lg"
@@ -71,14 +70,7 @@ const Chatbot = () => {
             disabled={isLoading}
             icon={
               isLoading ? (
-                <Spin
-                  indicator={
-                    <LoadingOutlined
-                      style={{ fontSize: 15, color: "white" }}
-                      spin
-                    />
-                  }
-                />
+                <Spin />
               ) : (
                 <IoMdSend />
               )
