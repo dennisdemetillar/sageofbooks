@@ -3,9 +3,10 @@ import { Input, Button, Spin } from "antd";
 import { IoMdSend } from "react-icons/io";
 import { LoadingOutlined } from "@ant-design/icons";
 import { useEffect, useRef } from "react";
+import Image from "next/image";
 
 const Chatbot = () => {
-  const { messages, input, handleInputChange, handleSubmit, isLoading, error } =
+  const { messages, input, handleInputChange, handleSubmit, isLoading } =
     useChat();
 
   const messagesEndRef = useRef<HTMLDivElement>(null);
@@ -22,10 +23,10 @@ const Chatbot = () => {
     return messages.map((message, index) => (
       <div className="flex flex-col gap-y-5" key={message.id}>
         <div className="flex gap-x-4 text-white items-center">
-          <img
+          <Image
             className="rounded-full"
             src={message.role === "user" ? "./person.jpg" : "./sage.jpg"}
-            alt="image"
+            alt="avatar"
             height={40}
             width={40}
           />
@@ -45,11 +46,12 @@ const Chatbot = () => {
         <div className="overflow-auto mb-10 h-96 mx-20">
           {messages.length === 0 ? (
             <div className="text-white flex flex-col items-center gap-y-10">
-              <img
+              <Image
                 src="./sage.jpg"
                 height={150}
                 width={150}
                 className="rounded-lg"
+                alt="sage image"
               />
               <p>Ask me Anything Young One</p>
             </div>
